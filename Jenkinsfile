@@ -19,7 +19,7 @@ node('haimaxy-jnlp') {
     stage('Push') {
         echo "4.Push Docker Image Stage"
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+            sh "docker login -u=${dockerHubUser} -p=${dockerHubPassword}"
             sh "docker push drexler814/jenkins-demo:${build_tag}"
         }
     }
